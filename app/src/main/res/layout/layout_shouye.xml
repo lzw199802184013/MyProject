@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/bgaBanner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+
+            <RelativeLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/bgaBanner">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_vp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#ffffff"></android.support.v4.view.ViewPager>
+
+                <LinearLayout
+                    android:id="@+id/linearlayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal"></LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/layout2">
+
+                <TextView
+                    android:id="@+id/tv_paoma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#222222" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout3"
+                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/shou_scan"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:padding="5dp"
+            android:src="@drawable/scan_w" />
+
+        <EditText
+            android:id="@+id/tv_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/shou_message"
+            android:layout_toRightOf="@id/shou_scan"
+            android:background="@drawable/yuan"
+            android:gravity="center_vertical"
+            android:hint="请输入内容"
+            android:paddingLeft="5dp" />
+
+        <ImageView
+            android:id="@+id/shou_message"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            android:padding="5dp"
+            android:src="@drawable/home_message" />
+    </RelativeLayout>
+</RelativeLayout>

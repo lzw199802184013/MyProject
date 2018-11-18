@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <soexample.umeng.com.myproject.view.HeadView
+        android:id="@+id/hv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:title="商品详情"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView11"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/hv"/>
+</RelativeLayout>

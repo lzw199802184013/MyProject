@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ShowActivity">
+
+    <soexample.umeng.com.myproject.view.HeadView
+        android:id="@+id/hv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:title="商品详情"
+        ></soexample.umeng.com.myproject.view.HeadView>
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/hv"
+        ></WebView>
+        <RelativeLayout
+            android:id="@+id/bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            >
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/car_yes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="购物车"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_toRightOf="@id/ll"
+            android:orientation="horizontal"
+            android:weightSum="1"
+
+            >
+
+            <Button
+                android:id="@+id/jiaru"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#d43c3c"
+                android:text="加入购物车" />
+
+            <Button
+                android:id="@+id/liji"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#e8e8e8"
+                android:text="立即购买" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <!--弹出的商品详情-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:id="@+id/layout_shop_add_car"
+        android:visibility="gone"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/layout_top"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/close"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/shop_close"
+                />
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/logo"
+                android:id="@+id/shop_image"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_toRightOf="@+id/shop_image"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/shop_price"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/shop_title"
+            android:layout_below="@+id/layout_top"
+            android:layout_marginTop="20dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button2"
+            android:text="确定"
+            android:layout_margin="10dp"
+            android:id="@+id/sure"
+            android:layout_below="@+id/shop_title"
+            android:layout_marginTop="80dp"
+            />
+    </RelativeLayout>
+</RelativeLayout>
