@@ -1,6 +1,7 @@
 package soexample.umeng.com.myproject.mvp.IView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -61,4 +62,5 @@ public abstract class ADeleGate implements DeleGate {
     }
 
     public abstract int getLayoutId();
+
 }

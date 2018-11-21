@@ -43,7 +43,7 @@ public class HttpUtils {
                 Request request = chain.request();
                 String method = request.method();
                 String host = request.url().host();
-                Log.i("intercept", method + "====" + host);
+                Log.i("intercept======", method + "====" + host);
                 return chain.proceed(request);
             }
         }).build();

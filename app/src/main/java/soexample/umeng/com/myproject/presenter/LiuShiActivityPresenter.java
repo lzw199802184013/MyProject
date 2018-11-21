@@ -50,11 +50,12 @@ public class LiuShiActivityPresenter extends ADeleGate implements View.OnClickLi
                     return;
                 }
 
-                stringList.add(0,et1);
+                stringList.add(0, et1);
                 liushi.setData(stringList);
-               //
+                //
                 Intent intent = new Intent(context, LeiBieActivity.class);
                 intent.putExtra("et", et1);
+                context.startActivity(intent);
                 break;
         }
     }

@@ -29,7 +29,6 @@ public class PubusBeanUtils {
 
     //初始化
     public void init(Context context) {
-
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "azx");
         SQLiteDatabase db = helper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(db);

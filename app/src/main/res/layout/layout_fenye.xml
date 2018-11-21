@@ -15,7 +15,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/sdView3"
         android:ellipsize="end"
-        android:lines="1"
+        android:lines="2"
         android:textSize="16sp"
         android:text="sss" />
     <TextView

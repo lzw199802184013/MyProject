@@ -27,6 +27,7 @@ import soexample.umeng.com.myproject.activity.ShowActivity;
 import soexample.umeng.com.myproject.listener.HttpListener;
 import soexample.umeng.com.myproject.model.DetaUtilsBean;
 import soexample.umeng.com.myproject.model.FenYeBean;
+import soexample.umeng.com.myproject.model.LeiBieBean;
 import soexample.umeng.com.myproject.model.PubuBean;
 import soexample.umeng.com.myproject.mvp.IView.ADeleGate;
 import soexample.umeng.com.myproject.net.Http;
@@ -69,6 +70,11 @@ public class ShowActivityPresenter extends ADeleGate implements View.OnClickList
         if (list != null) {
             pid = list.getPid() + "";
             url = list.getDetailUrl();
+        }
+        LeiBieBean.DataBean list2 = (LeiBieBean.DataBean) intent.getSerializableExtra("list2");
+        if (list2 != null) {
+            pid = list2.getPid() + "";
+            url = list2.getDetailUrl();
         }
         toast(context, pid + "");
         try {

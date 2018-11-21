@@ -1,5 +1,7 @@
 package soexample.umeng.com.myproject.net;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +10,10 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -17,14 +23,34 @@ public class HelperUtils {
 
     private BaseService baseService;
 
+
     public HelperUtils() {
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                String method = request.method();
+                String host = request.url().host();
+                Log.i("intercep", method + "----" + host);
+                return chain.proceed(request);
+            }
+        }).build();
         Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
                 //适配器工厂
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl("http://www.zhaoapi.cn/")
                 .build();
         baseService = retrofit.create(BaseService.class);
 
+    }
+
+    private static HelperUtils helperUtils;
+    private static HelperUtils getHelperUtils() {
+        if (helperUtils == null) {
+            helperUtils = new HelperUtils();
+        }
+        return helperUtils;
     }
     //get
 

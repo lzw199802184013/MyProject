@@ -235,7 +235,7 @@ public class ShopCarFragmentPresenter extends ADeleGate implements View.OnClickL
                 break;
         }
     }
-
+    //删除
     private void doGes(String pid) {
     /*    uid = SharedPreferencesUtils.getString(context, "uid");
         token = SharedPreferencesUtils.getString(context, "token");*/

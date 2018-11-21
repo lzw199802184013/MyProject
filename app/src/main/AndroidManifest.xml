@@ -29,6 +29,7 @@
         <activity android:name=".activity.LiuShiActivity"></activity>
         <activity android:name=".activity.ShowFenyeActivity"></activity>
         <activity android:name=".activity.LeiBieActivity"></activity>
+        <activity android:name=".activity.PhotoActivity"></activity>
     </application>
 
 </manifest>

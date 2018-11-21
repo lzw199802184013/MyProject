@@ -2,6 +2,8 @@ package soexample.umeng.com.myproject.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -9,14 +11,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import soexample.umeng.com.myproject.R;
 import soexample.umeng.com.myproject.activity.LoginActivity;
+import soexample.umeng.com.myproject.activity.PhotoActivity;
 import soexample.umeng.com.myproject.adapter.WodeAdapter;
 import soexample.umeng.com.myproject.model.WoDeBean;
 import soexample.umeng.com.myproject.mvp.IView.ADeleGate;
@@ -28,6 +34,7 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
     private List<WoDeBean> woDeBeans = new ArrayList<>();
     private ImageView iv;
     private TextView login;
+
 
     @Override
     public int getLayoutId() {
@@ -44,9 +51,10 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recuyclerView7.setLayoutManager(linearLayoutManager);
         recuyclerView7.setAdapter(wodeAdapter);
-        setClick(this, R.id.user_to, R.id.tuichu);
+        setClick(this, R.id.login, R.id.tuichu, R.id.iv);
         iv = (ImageView) get(R.id.iv);
         login = (TextView) get(R.id.login);
+
     }
 
     private void setData() {
@@ -86,28 +94,37 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.user_to:
+            case R.id.login:
                 //没有登🦌点击跳转到登录页面，登录过就跳转到信息页面
-                String userName = SharedPreferencesUtils.getString(context, "userName");
-                if (TextUtils.isEmpty(userName)) {
-                    //如果name为空，跳转到登陆页面
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                } else {
-                    //详情页面
-                    toast(context, "已经登录过，如需重新登录，请先退出登录");
-                    return;
-                }
+                goActivity();
                 break;
             case R.id.tuichu:
                 SharedPreferencesUtils.putString(context, "userName", "");
                 SharedPreferencesUtils.putString(context, "token", "");
                 SharedPreferencesUtils.putString(context, "uid", "");
-                SharedPreferencesUtils.putString(context,"ss","2");
+                SharedPreferencesUtils.putString(context, "ss", "2");
                 login.setText("登录");
                 toast(context, "退出成功");
-                SharedPreferencesUtils.putString(context,"cars_refresh","2");
+                iv.setImageResource(R.mipmap.ic_launcher);
+                SharedPreferencesUtils.putString(context, "cars_refresh", "2");
                 break;
+            case R.id.iv:
+                //图片
+                goActivity();
 
+        }
+    }
+
+    private void goActivity() {
+        String userName = SharedPreferencesUtils.getString(context, "userName");
+        if (TextUtils.isEmpty(userName)) {
+            //如果name为空，跳转到登陆页面
+            context.startActivity(new Intent(context, LoginActivity.class));
+        } else {
+            //详情页面
+            Intent intent = new Intent(context, PhotoActivity.class);
+            context.startActivity(intent);
+            return;
         }
     }
 
@@ -117,12 +134,15 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
         if (!TextUtils.isEmpty(userName)) {
             login.setText(userName);
         }
-        if (!TextUtils.isEmpty(icon)) {
-            Glide.with(context).load(icon).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv);
-
+        if (!TextUtils.isEmpty(icon) ) {
+            String replace = icon.replace("https", "http");
+            Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv);
         } else {
             iv.setImageResource(R.mipmap.ic_launcher);
-
+//                File file = new File(Environment.getExternalStorageDirectory(), "head.png");
+//                if (file.exists()) {
+//                    iv.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
+//                }
         }
 
     }

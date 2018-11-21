@@ -28,4 +28,6 @@ public class Http {
     public static String ShopGuan_URL = "/product/searchProducts";
     //删除购物车
     public  static  String ShopDelete_URL="/product/deleteCart";
+    //获取用户信息
+    public  static  String ShopUser_URL="/user/getUserInfo";
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -17,10 +18,10 @@
 
             <ImageView
                 android:id="@+id/iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:background="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/login"
@@ -37,13 +38,14 @@
         android:id="@+id/recyclerView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
     <Button
+        android:id="@+id/tuichu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="退出登录"
-        android:id="@+id/tuichu"
-        android:background="@drawable/button2"
         android:layout_marginTop="10dp"
+        android:background="@drawable/button2"
+        android:text="退出登录"
 
         />
 </LinearLayout>
