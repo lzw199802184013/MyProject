@@ -46,7 +46,7 @@ public class HelperUtils {
     }
 
     private static HelperUtils helperUtils;
-    private static HelperUtils getHelperUtils() {
+    public static HelperUtils getHelperUtils() {
         if (helperUtils == null) {
             helperUtils = new HelperUtils();
         }

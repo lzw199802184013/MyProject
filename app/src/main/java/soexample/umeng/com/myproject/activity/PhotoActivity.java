@@ -22,5 +22,6 @@ public class PhotoActivity extends BaseActivityPresenter<PhotoActivityPresenter>
     protected void onResume() {
         super.onResume();
         deleGate.onResume();
+
     }
 }
