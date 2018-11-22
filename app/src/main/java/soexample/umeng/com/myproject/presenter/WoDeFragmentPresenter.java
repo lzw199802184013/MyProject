@@ -32,7 +32,7 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
     private Context context;
     private RecyclerView recuyclerView7;
     private List<WoDeBean> woDeBeans = new ArrayList<>();
-    private ImageView iv;
+    private SimpleDraweeView iv;
     private TextView login;
 
 
@@ -52,7 +52,7 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
         recuyclerView7.setLayoutManager(linearLayoutManager);
         recuyclerView7.setAdapter(wodeAdapter);
         setClick(this, R.id.login, R.id.tuichu, R.id.iv);
-        iv = (ImageView) get(R.id.iv);
+        iv = (SimpleDraweeView) get(R.id.iv);
         login = (TextView) get(R.id.login);
 
     }
@@ -134,11 +134,13 @@ public class WoDeFragmentPresenter extends ADeleGate implements View.OnClickList
         if (!TextUtils.isEmpty(userName)) {
             login.setText(userName);
         }
-        if (!TextUtils.isEmpty(icon) ) {
+        if (!TextUtils.isEmpty(icon)) {
             String replace = icon.replace("https", "http");
-            Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv);
+            iv.setImageURI(replace);
+//            Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv);
         } else {
-            iv.setImageResource(R.mipmap.ic_launcher);
+            iv.setImageURI(String.valueOf(R.mipmap.ic_launcher));
+//            iv.setImageResource(R.mipmap.ic_launcher);
 //                File file = new File(Environment.getExternalStorageDirectory(), "head.png");
 //                if (file.exists()) {
 //                    iv.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));

@@ -61,7 +61,7 @@ public class LoginActivityPresenter extends ADeleGate implements View.OnClickLis
             return;
         }
         if (userName.length() != 11) {
-            toast(context, "请输入正确得手机号");
+            toast(context, "请输入正确的手机号");
             return;
         }
         String userPass = user_pass.getText().toString().trim();

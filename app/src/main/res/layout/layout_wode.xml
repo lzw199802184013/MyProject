@@ -16,12 +16,13 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:src="@mipmap/ic_launcher" />
+                app:placeholderImage="@mipmap/ic_launcher"
+                app:roundAsCircle="true" />
 
             <TextView
                 android:id="@+id/login"

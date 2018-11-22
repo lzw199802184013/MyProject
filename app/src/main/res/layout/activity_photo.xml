@@ -33,13 +33,13 @@
             android:textColor="#222222"
             android:textSize="16sp" />
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/right"
-            android:src="@mipmap/ic_launcher" />
+            app:roundAsCircle="true" />
 
         <ImageView
             android:id="@+id/right"

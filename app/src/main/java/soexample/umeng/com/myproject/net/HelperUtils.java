@@ -31,7 +31,8 @@ public class HelperUtils {
                 Request request = chain.request();
                 String method = request.method();
                 String host = request.url().host();
-                Log.i("intercep", method + "----" + host);
+                String string = request.toString();
+                Log.i("intercep", method + "----" + host + "===" + string);
                 return chain.proceed(request);
             }
         }).build();
@@ -46,6 +47,7 @@ public class HelperUtils {
     }
 
     private static HelperUtils helperUtils;
+
     public static HelperUtils getHelperUtils() {
         if (helperUtils == null) {
             helperUtils = new HelperUtils();

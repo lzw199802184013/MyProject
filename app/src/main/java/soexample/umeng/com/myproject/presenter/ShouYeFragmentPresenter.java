@@ -290,4 +290,5 @@ public class ShouYeFragmentPresenter extends ADeleGate implements View.OnClickLi
             }
         });
     }
+
 }

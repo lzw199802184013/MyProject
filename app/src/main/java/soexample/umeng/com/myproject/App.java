@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import soexample.umeng.com.myproject.model.PubusBeanUtils;
+import soexample.umeng.com.myproject.view.PhotoPopwindow;
 
 public class App extends Application {
 
@@ -14,4 +15,5 @@ public class App extends Application {
         Fresco.initialize(this);
 
     }
+
 }

@@ -53,7 +53,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class PhotoActivityPresenter extends ADeleGate implements View.OnClickListener {
     private Context context;
-    private ImageView iv_photo;
+    private SimpleDraweeView iv_photo;
     private static String path;//sd路径
     private Bitmap head;//头像Bitmap
 
@@ -66,7 +66,7 @@ public class PhotoActivityPresenter extends ADeleGate implements View.OnClickLis
     public void initData() {
         super.initData();
         path = Environment.getExternalStorageDirectory().getAbsolutePath();
-        iv_photo = (ImageView) get(R.id.iv_photo);
+        iv_photo = (SimpleDraweeView) get(R.id.iv_photo);
         setClick(this, R.id.iv_photo);
 //        File file = new File(Environment.getExternalStorageDirectory(), "head.png");
 //        if (file.exists()) {
@@ -171,7 +171,7 @@ public class PhotoActivityPresenter extends ADeleGate implements View.OnClickLis
                 });
     }
 
-
+    //请求
     private void dohttp() {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "22047");
@@ -184,7 +184,8 @@ public class PhotoActivityPresenter extends ADeleGate implements View.OnClickLis
                     if (userBean.getData().getIcon() != null) {
                         String icon = (String) userBean.getData().getIcon();
                         String replace = icon.replace("https", "http");
-                        Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv_photo);
+                        iv_photo.setImageURI(replace);
+//                        Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv_photo);
                         SharedPreferencesUtils.putString(context, "icon", icon);
                     }
                 }
@@ -249,10 +250,12 @@ public class PhotoActivityPresenter extends ADeleGate implements View.OnClickLis
         String icon = SharedPreferencesUtils.getString(context, "icon");
         if (!TextUtils.isEmpty(icon)) {
             String replace = icon.replace("https", "http");
-            Log.i("aaa",replace);
-            Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv_photo);
+            Log.i("aaa", replace);
+            iv_photo.setImageURI(replace);
+//            Glide.with(context).load(replace).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).fitCenter().into(iv_photo);
         } else {
-            iv_photo.setImageResource(R.mipmap.ic_launcher);
+            iv_photo.setImageURI(String.valueOf(R.mipmap.ic_launcher));
+//            iv_photo.setImageResource(R.mipmap.ic_launcher);
 //                File file = new File(Environment.getExternalStorageDirectory(), "head.png");
 //                if (file.exists()) {
 //                    iv.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
